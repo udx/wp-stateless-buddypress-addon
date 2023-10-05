@@ -1,0 +1,1 @@
+# wp-stateless-buddypress-addon
