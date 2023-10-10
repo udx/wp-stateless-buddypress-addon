@@ -1,0 +1,35 @@
+{
+  "name": "udx/wp-stateless-buddypress-addon",
+  "description": "Ensures compatibility with BuddyPress",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "UDX",
+      "email": "info@udx.io"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "files": [
+      "class-buddypress.php"
+    ]
+  },
+  "scripts": {
+    "test": [
+      "@composer install",
+      "./vendor/bin/phpunit --prepend tests/prepend.php tests/ --testdox"
+    ],
+    "release": [
+      "sh build.sh"
+    ]
+  },
+  "scripts-descriptions": {
+    "test": "Run all tests.",
+    "release": "Release a new plugin version. Example: `composer release 1.2.1`"
+  }
+}
