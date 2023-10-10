@@ -62,9 +62,6 @@ class BuddyPress extends Compatibility {
    * @return void
    */
   public function bp_core_fetch_avatar($image_html) {
-    error_log('$image_html before =======================');
-    error_log($image_html);
-
     try {
       preg_match("/src=(?:'|\")(http.*?)(?:'|\")/", $image_html, $image_url);
       if (!empty($image_url[1])) {
@@ -74,8 +71,6 @@ class BuddyPress extends Compatibility {
     } catch (\Throwable $th) {
       //throw $th;
     }
-    error_log('$image_html after =======================');
-    error_log($image_html);
     return $image_html;
   }
 
@@ -86,14 +81,9 @@ class BuddyPress extends Compatibility {
    * @return void
    */
   public function bp_core_fetch_avatar_url($url) {
-    ob_start();
-    var_dump($url);
     $wp_uploads_dir = wp_get_upload_dir();
-    var_dump($wp_uploads_dir);
     $name = apply_filters('wp_stateless_file_name', $url, 0);
-    var_dump($name);
     $full_avatar_path = $wp_uploads_dir['basedir'] . '/' . $name;
-    error_log( ob_get_clean() );
 
     $root_dir = ud_get_stateless_media()->get('sm.root_dir');
     $root_dir = apply_filters("wp_stateless_handle_root_dir", $root_dir);
