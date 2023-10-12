@@ -144,7 +144,7 @@ class BuddyPress extends Compatibility {
     }
 
     try {
-      $debug_backtrace = \debug_backtrace(false);
+      $debug_backtrace = debug_backtrace(false);
 
       // Making sure we only return GCS link if the type is url.
       if (!empty($debug_backtrace[3]['args'][0]) && $debug_backtrace[3]['args'][0] == 'url') {
