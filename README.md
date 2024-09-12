@@ -8,7 +8,7 @@ Provides compatibility between the [BuddyPress](https://wordpress.org/plugins/bu
 
 ### Notes
 
-* Tested with BuddyPress plugin version 11.4.0
+* Tested with BuddyPress plugin version 14.1.0
 
 ### Support, Feedback, & Contribute
 
