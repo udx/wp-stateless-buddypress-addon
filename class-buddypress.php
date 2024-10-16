@@ -28,10 +28,8 @@ class BuddyPress extends Compatibility {
 
     add_filter('bp_core_avatar_folder_url', array($this, 'bp_core_avatar_folder_url'), 10, 4);
     add_filter('bp_core_avatar_folder_dir', array($this, 'bp_core_avatar_folder_dir'), 10, 4);
-    add_filter('stateless_skip_cache_busting', array($this, 'skip_cache_busting'), 20, 2);
     add_filter('sm:sync::syncArgs', array($this, 'sync_args'), 10, 4);
     add_filter('bp_core_pre_delete_existing_avatar', array($this, 'delete_existing_avatar'), 10, 2);
-    add_filter('bp_attachments_pre_get_attachment', array($this, 'bp_attachments_pre_get_attachment'), 10, 2);
   }
 
   /**
@@ -89,67 +87,6 @@ class BuddyPress extends Compatibility {
 
     if ( ud_get_stateless_media()->is_mode( ['ephemeral', 'stateless'] ) ) {
       $return = false;
-    }
-
-    return $return;
-  }
-
-  /**
-   * Sync and return GCS url for group images.
-   *
-   * Used as CSS background-image.
-   *
-   * @param [type] $return
-   * @param [type] $r
-   * @return void
-   */
-  public function bp_attachments_pre_get_attachment($return, $r) {
-    // Return if this is a recursive call.
-    if (!empty($r['recursive'])) {
-      return $return;
-    }
-
-    try {
-      $debug_backtrace = debug_backtrace(false);
-
-      // Making sure we only return GCS link if the type is url.
-      if (!empty($debug_backtrace[3]['args'][0]) && $debug_backtrace[3]['args'][0] == 'url') {
-        $r['recursive'] = true;
-
-        $url = bp_attachments_get_attachment('url', $r);
-        $name = apply_filters('wp_stateless_file_name', $url, 0);
-
-        $root_dir = ud_get_stateless_media()->get('sm.root_dir');
-        $root_dir = apply_filters("wp_stateless_handle_root_dir", $root_dir);
-        $root_dir = trim($root_dir, '/ '); // Remove any forward slash and empty space.
-
-        if (!empty($name) && $root_dir . "/" != $name) {
-          $full_path = bp_attachments_get_attachment(false, $r);
-          do_action('sm:sync::syncFile', $name, $full_path, false, array('ephemeral' => false));
-          $return = ud_get_stateless_media()->get_gs_host() . '/' . $name;
-        }
-      }
-    } catch (\Throwable $th) {
-    }
-    return $return;
-  }
-
-  /**
-   * Skip cache busting while Buddypress processes images.
-   * 
-   * @param $return
-   * @param $filename
-   * @return mixed
-   */
-  public function skip_cache_busting($return, $filename) {
-    $back_trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
-
-    foreach ($back_trace as $trace) {
-      if ( isset($trace['file']) && strpos($trace['file'], 'buddypress') !== false ) {
-        if ( isset($trace['function']) && $trace['function'] === 'sanitize_file_name' ) {
-          return $filename;
-        }
-      }
     }
 
     return $return;
