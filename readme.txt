@@ -1,5 +1,5 @@
 === WP-Stateless - BuddyPress Addon ===
-Contributors: usability_dynamics, andypotanin, ideric, maxim.peshkov, planvova, obolgun
+Contributors: usability_dynamics, andypotanin, ideric, planvova, obolgun
 Donate link: https://udx.io
 Tags: buddypress, buddypress addon extension, google cloud storage, stateless, wp-stateless
 License: GPLv2 or later
