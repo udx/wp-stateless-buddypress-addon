@@ -1,11 +1,11 @@
 === WP-Stateless - BuddyPress Addon ===
-Contributors: usability_dynamics, andypotanin, ideric, maxim.peshkov, planvova, obolgun
+Contributors: usability_dynamics, andypotanin, ideric, planvova, obolgun
 Donate link: https://udx.io
-Tags: buddypress, avatars, groups, profiles, google, google cloud, google cloud storage, cdn, uploads, media, stateless, backup
+Tags: buddypress, buddypress addon extension, google cloud storage, stateless, wp-stateless
 License: GPLv2 or later
 Requires PHP: 8.0
 Requires at least: 5.0
-Tested up to: 6.4.1
+Tested up to: 6.6.2
 Stable tag: 0.0.1
 
 Provides compatibility between the BuddyPress and the WP-Stateless plugins.
@@ -20,7 +20,7 @@ Provides compatibility between the [BuddyPress](https://wordpress.org/plugins/bu
 
 = Notes =
 
-* Tested with BuddyPress plugin version 11.4.0
+* Tested with BuddyPress plugin version 14.1.0
 
 = Support, Feedback, & Contribute =
 
