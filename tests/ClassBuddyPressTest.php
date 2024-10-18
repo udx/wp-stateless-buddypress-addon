@@ -73,13 +73,15 @@ class ClassBuddyPressTest extends TestCase {
     self::assertNotFalse( has_filter('bp_core_avatar_folder_dir', [ $budypress, 'bp_core_avatar_folder_dir' ]) );
     self::assertNotFalse( has_filter('bp_core_pre_delete_existing_avatar', [ $budypress, 'delete_existing_avatar' ]) );
     self::assertNotFalse( has_filter('sm:sync::syncArgs', [ $budypress, 'sync_args' ]) );
+    self::assertNotFalse( has_filter('bp_attachments_pre_get_attachment', [ $budypress, 'bp_attachments_pre_get_attachment' ]) );
+    self::assertNotFalse( has_filter('stateless_skip_cache_busting', [ $budypress, 'skip_cache_busting' ]) );
   }
 
   public function testShouldCountHooks() {
     $budypress = new BuddyPress();
 
     Functions\expect('add_action')->times(2);
-    Functions\expect('add_filter')->times(4);
+    Functions\expect('add_filter')->times(6);
 
     $budypress->module_init([]);
   }
@@ -100,6 +102,15 @@ class ClassBuddyPressTest extends TestCase {
     $budypress->delete_existing_avatar(self::AVATAR_SRC_URL, self::TEST_BP_DATA);
   }
 
+  public function testShouldPreGetAttachment() {
+    $budypress = new BuddyPress();
+    Actions\expectDone('sm:sync::syncFile')->once();
+    $this->assertEquals(
+      self::AVATAR_DST_URL,
+      $budypress->bp_attachments_pre_get_attachment(self::AVATAR_DST_URL, self::TEST_BP_DATA),
+    );
+  }
+  
   public function testShouldUpdateArgs() {
     $budypress = new BuddyPress();
 

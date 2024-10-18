@@ -5,7 +5,7 @@
  * Plugin URI: https://stateless.udx.io/addons/buddypress/
  * Description: Provides compatibility between the BuddyPress and the WP-Stateless plugins.
  * Author: UDX
- * Version: 0.0.1
+ * Version: 0.0.2
  * Text Domain: wp-stateless-buddypress-addon
  * Author URI: https://udx.io
  * License: GPLv2 or later

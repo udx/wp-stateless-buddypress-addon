@@ -3,7 +3,7 @@
         'name' => 'udx/wp-stateless-buddypress-addon',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0974f8d83917b8e8489e9ab0bfa26e4a4659407f',
+        'reference' => 'a609f8069d78f89eda99035072201433af08c729',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'udx/wp-stateless-buddypress-addon' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0974f8d83917b8e8489e9ab0bfa26e4a4659407f',
+            'reference' => 'a609f8069d78f89eda99035072201433af08c729',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

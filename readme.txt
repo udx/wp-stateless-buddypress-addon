@@ -6,7 +6,7 @@ License: GPLv2 or later
 Requires PHP: 8.0
 Requires at least: 5.0
 Tested up to: 6.6.2
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 
 Provides compatibility between the BuddyPress and the WP-Stateless plugins.
 
@@ -43,6 +43,10 @@ To ensure new releases cause as little disruption as possible, we rely on early 
 == Upgrade Notice ==
 
 == Changelog ==
+
+= 0.0.2 =
+
+* FIX: disable `Cache Busting` when working with BuddyPress attachments.
 
 = 0.0.1 =
 
